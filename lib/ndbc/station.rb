@@ -38,7 +38,9 @@ module NDBC
     end
 
     def standard_meteorological_data
-      parse_observation_response get_data(NDBC.config[:urls][:observations] + id + ".txt")
+      @standard_meteorological_data ||= parse_observation_response(
+        get_data(NDBC.config[:urls][:observations] + id + ".txt")
+      )
     end
 
     def latest_standard_meteorological_data
@@ -46,7 +48,9 @@ module NDBC
     end
 
     def continuous_winds_data
-      parse_observation_response get_data(NDBC.config[:urls][:observations] + id + ".cwind")
+      @continuous_winds_data ||= parse_observation_response(
+        get_data(NDBC.config[:urls][:observations] + id + ".cwind")
+      )
     end
 
     def latest_continuous_winds_data
@@ -54,7 +58,9 @@ module NDBC
     end
 
     def spectral_wave_summaries
-      parse_observation_response get_data(NDBC.config[:urls][:observations] + id + ".spec")
+      @spectral_wave_summaries ||= parse_observation_response(
+        get_data(NDBC.config[:urls][:observations] + id + ".spec")
+      )
     end
 
     def latest_spectral_wave_summaries
@@ -62,7 +68,9 @@ module NDBC
     end
 
     def spectral_wave_forecasts
-      parse_prediction_response get_data(NDBC.config[:urls][:predictions] + "multi_1.#{id}.bull")
+      @spectral_wave_forecasts ||= parse_prediction_response(
+        get_data(NDBC.config[:urls][:predictions] + "multi_1.#{id}.bull")
+      )
     end
 
     def latest_spectral_wave_forecasts
