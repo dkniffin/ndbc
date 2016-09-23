@@ -27,6 +27,7 @@ module NDBC
       private
 
       def tide_station_id(name)
+        return '' unless name
         name.match(/\d{7}/).to_s
       end
 
